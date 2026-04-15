@@ -1,5 +1,6 @@
 import { Waves, ArrowLeft, Flame } from 'lucide-react';
 import AdvancedSection from '../components/AdvancedSection';
+import AdvancedTableOfContents from '../components/AdvancedTableOfContents';
 import PrintButton from '../components/PrintButton';
 
 export default function AdvancedPage({ onBack }) {
@@ -67,6 +68,7 @@ export default function AdvancedPage({ onBack }) {
           </p>
         </div>
 
+        <AdvancedTableOfContents />
         <AdvancedSection />
 
         <div className="mt-16 border border-[#122035] p-8 bg-[#080f1e] border-l-4 border-l-[#f59e0b]">
