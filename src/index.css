@@ -42,27 +42,36 @@ body {
 }
 
 @media print {
+  @page {
+    margin: 1.5cm 2cm;
+    size: A4;
+  }
+
   * {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: transparent !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 
   body {
     background-color: #ffffff !important;
-    color: #111827 !important;
     font-size: 11pt;
     line-height: 1.6;
   }
 
   header,
   aside,
-  .mobile-menu,
   button {
     display: none !important;
   }
 
   #root > div {
     min-height: unset;
+    background-color: #ffffff !important;
   }
 
   main {
@@ -89,25 +98,25 @@ body {
     color: #111827 !important;
     page-break-after: avoid;
     break-after: avoid;
+    background: none !important;
   }
 
-  h1 {
-    font-size: 28pt !important;
-  }
+  h1 { font-size: 26pt !important; }
 
   h2 {
-    font-size: 18pt !important;
-    border-bottom: 2px solid #00d4ff;
+    font-size: 16pt !important;
+    border-bottom: 2px solid #0369a1 !important;
     padding-bottom: 4px;
-    margin-bottom: 12pt;
+    margin-bottom: 10pt;
+    color: #0c4a6e !important;
   }
 
   h3 {
-    font-size: 13pt !important;
+    font-size: 12pt !important;
     color: #1e40af !important;
   }
 
-  p, li {
+  p, li, span {
     color: #374151 !important;
     orphans: 3;
     widows: 3;
@@ -118,12 +127,6 @@ body {
     text-decoration: underline !important;
   }
 
-  a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 8pt;
-    color: #6b7280 !important;
-  }
-
   a[href^="#"]::after,
   a[href^="javascript"]::after {
     content: "";
@@ -131,9 +134,9 @@ body {
 
   pre, code {
     background-color: #f3f4f6 !important;
-    color: #111827 !important;
+    color: #1f2937 !important;
     border: 1px solid #d1d5db !important;
-    font-size: 9pt;
+    font-size: 8.5pt;
     page-break-inside: avoid;
     break-inside: avoid;
   }
@@ -144,56 +147,29 @@ body {
     word-break: break-word !important;
   }
 
-  .bg-\[\#060d1a\],
-  .bg-\[\#0a1628\],
-  .bg-\[\#0d1f35\],
-  .bg-\[\#122035\] {
+  [class*="bg-\["] {
     background-color: #f8fafc !important;
   }
 
-  .text-\[\#e2e8f0\],
-  .text-\[\#94a3b8\],
-  .text-\[\#64748b\],
-  .text-\[\#475569\] {
+  [class*="text-\["] {
     color: #374151 !important;
   }
 
-  .text-\[\#00d4ff\] {
-    color: #0369a1 !important;
-  }
-
-  .border-\[\#122035\],
-  .border-\[\#162840\] {
+  [class*="border-\["] {
     border-color: #d1d5db !important;
   }
 
-  .border-\[\#00d4ff\] {
-    border-color: #0369a1 !important;
+  [class*="divide-\["] > * {
+    border-color: #d1d5db !important;
   }
 
-  .hero-section {
-    min-height: unset !important;
-    padding: 2rem 0 !important;
+  [class*="from-\["],
+  [class*="to-\["],
+  [class*="via-\["] {
+    background: #f8fafc !important;
   }
 
-  [class*="bg-[#00d4ff]"] {
-    background-color: #0369a1 !important;
-  }
-
-  [class*="text-black"] {
-    color: #ffffff !important;
-  }
-
-  .print\:hidden {
-    display: none !important;
-  }
-
-  @page {
-    margin: 1.5cm 2cm;
-    size: A4;
-  }
-
-  @page :first {
-    margin-top: 1cm;
+  .text-black {
+    color: #111827 !important;
   }
 }
