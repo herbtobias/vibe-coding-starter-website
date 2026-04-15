@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, Waves } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import MobileMenu from './components/MobileMenu';
+import PrintButton from './components/PrintButton';
 import HeroSection from './components/HeroSection';
 import Phase1Section from './components/Phase1Section';
 import Phase1_1Section from './components/Phase1_1Section';
@@ -69,10 +70,11 @@ export default function App() {
               </span>
             </a>
           </div>
-          <div>
+          <div className="flex items-center gap-3">
             <span className="text-[10px] font-mono text-[#00d4ff] bg-[#00d4ff]/10 border border-[#00d4ff]/20 px-2 py-0.5 uppercase tracking-widest">
               2026 Edition
             </span>
+            <PrintButton />
           </div>
         </div>
       </header>
