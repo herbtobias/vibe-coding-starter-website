@@ -2,6 +2,7 @@ import { Palette, ExternalLink, Image, Star } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import Callout from './Callout';
 import CodeBlock from './CodeBlock';
+import ToolLink from './ToolLink';
 
 const stitchPrompt = `"Erstelle das UI für eine [App-Art]. Das Design soll modern, clean und
 im [Dark Mode / Apple-Style / Retro-Look] sein. Ich brauche einen
@@ -16,18 +17,21 @@ const resources = [
   {
     name: 'Mobbin',
     url: 'mobbin.com',
+    href: 'https://mobbin.com',
     badge: '#1',
     desc: 'Die absolute Nummer 1 für echte App- und Web-Designs. Tausende Screenshots von jeder großen App (Spotify, Airbnb, Uber) – perfekt für bewährte UX-Muster und Layouts.',
   },
   {
     name: 'Dribbble',
     url: 'dribbble.com',
+    href: 'https://dribbble.com',
     badge: 'Design',
     desc: 'Die größte Plattform für Design-Portfolios. Suche nach "Dashboard", "Login Screen" oder "Fitness App" und screenshotte was du liebst.',
   },
   {
     name: 'Tailwind UI',
     url: 'tailwindui.com',
+    href: 'https://tailwindui.com',
     badge: 'Components',
     desc: 'Da wir mit Tailwind CSS arbeiten, lohnt sich ein Blick auf die offiziellen Web-Komponenten. Die KI kann diesen Standard-Tailwind-Look fast 1:1 nachbauen.',
   },
@@ -59,7 +63,7 @@ export default function Phase2Section() {
       <div className="bg-[#0a1628] border border-[#162840] rounded-none p-5 mb-6">
         <div className="flex items-center gap-2 mb-2">
           <ExternalLink size={14} className="text-[#00d4ff]" />
-          <span className="text-sm font-semibold text-[#00d4ff]">Das Tool: Google Stitch</span>
+          <ToolLink href="https://stitch.withgoogle.com" className="text-sm font-semibold">Das Tool: Google Stitch</ToolLink>
         </div>
         <p className="text-sm text-[#94a3b8]">
           Ein KI-gestütztes UI-Generierungstool, das direkt Tailwind CSS Code ausgibt.
@@ -100,18 +104,26 @@ export default function Phase2Section() {
 
         <div className="space-y-4 mb-6">
           {resources.map((res) => (
-            <div key={res.name} className="flex gap-4 p-4 bg-[#0a1628] border border-[#162840] rounded-none hover:border-[#00d4ff]/30 transition-colors duration-200">
+            <a
+              key={res.name}
+              href={res.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-4 p-4 bg-[#0a1628] border border-[#162840] rounded-none hover:border-[#00d4ff]/30 transition-colors duration-200 group block"
+            >
               <div className="flex flex-col items-center min-w-[60px]">
-                <Image size={18} className="text-[#475569] mb-1" />
+                <Image size={18} className="text-[#475569] mb-1 group-hover:text-[#00d4ff] transition-colors duration-150" />
                 <span className="text-xs text-[#00d4ff] bg-[#00d4ff]/10 px-2 py-0.5 rounded-sm font-mono">{res.badge}</span>
               </div>
               <div>
-                <p className="font-semibold text-[#e2e8f0] text-sm mb-1">
-                  {res.name} <span className="text-[#475569] font-normal">— {res.url}</span>
+                <p className="font-semibold text-[#e2e8f0] text-sm mb-1 flex items-center gap-1.5">
+                  {res.name}
+                  <span className="text-[#475569] font-normal">— {res.url}</span>
+                  <ExternalLink size={11} className="text-[#475569] group-hover:text-[#00d4ff] transition-colors duration-150" />
                 </p>
                 <p className="text-xs text-[#94a3b8] leading-relaxed">{res.desc}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 

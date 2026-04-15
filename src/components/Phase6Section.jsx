@@ -2,26 +2,27 @@ import { Rocket, Server, Shield, ExternalLink } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import CodeBlock from './CodeBlock';
 import Callout from './Callout';
+import ToolLink from './ToolLink';
 
 const gitignoreCmd = `echo ".env" >> .gitignore
 git add .gitignore
 git commit -m "chore: ignore env file"`;
 
 const vercelSteps = [
-  'Erstelle einen kostenlosen Account bei Vercel.',
-  'Klicke auf "Add New Project".',
-  'Verbinde deinen GitHub-Account. Vercel zeigt dir nun eine Liste deiner Repositories.',
-  'Klicke bei deinem Projekt auf "Import".',
-  'Vercel erkennt meistens automatisch, welches Framework du nutzt (z.B. Vite, React, Next.js) und trägt die richtigen Build-Befehle ein.',
-  'Klicke auf "Deploy".',
+  { text: 'Erstelle einen kostenlosen Account bei Vercel.', link: { label: 'vercel.com', href: 'https://vercel.com/signup' } },
+  { text: 'Klicke auf "Add New Project".', link: null },
+  { text: 'Verbinde deinen GitHub-Account. Vercel zeigt dir nun eine Liste deiner Repositories.', link: null },
+  { text: 'Klicke bei deinem Projekt auf "Import".', link: null },
+  { text: 'Vercel erkennt meistens automatisch, welches Framework du nutzt (z.B. Vite, React, Next.js) und trägt die richtigen Build-Befehle ein.', link: null },
+  { text: 'Klicke auf "Deploy".', link: null },
 ];
 
 const renderSteps = [
-  'Erstelle einen Account bei Render.',
-  'Klicke auf "New" → "Web Service".',
-  'Verbinde dein GitHub-Repo.',
-  'Wähle die Umgebung (z.B. Node oder Python) und trage den Start-Befehl ein (meistens npm start oder node server.js).',
-  'Wähle den "Free" (kostenlos) Plan und klicke auf "Create Web Service".',
+  { text: 'Erstelle einen Account bei Render.', link: { label: 'render.com', href: 'https://render.com' } },
+  { text: 'Klicke auf "New" → "Web Service".', link: null },
+  { text: 'Verbinde dein GitHub-Repo.', link: null },
+  { text: 'Wähle die Umgebung (z.B. Node oder Python) und trage den Start-Befehl ein (meistens npm start oder node server.js).', link: null },
+  { text: 'Wähle den "Free" (kostenlos) Plan und klicke auf "Create Web Service".', link: null },
 ];
 
 export default function Phase6Section() {
@@ -59,7 +60,7 @@ export default function Phase6Section() {
               </svg>
             </div>
             <div>
-              <p className="font-bold text-[#e2e8f0] text-sm">Vercel</p>
+              <ToolLink href="https://vercel.com" className="font-bold text-[#e2e8f0] text-sm">Vercel</ToolLink>
               <p className="text-xs text-[#10b981]">Kostenlos für Hobby-Projekte — Empfehlung</p>
             </div>
           </div>
@@ -71,7 +72,10 @@ export default function Phase6Section() {
               {vercelSteps.map((step, i) => (
                 <div key={i} className="flex gap-3 text-xs">
                   <span className="text-[#00d4ff] font-mono font-bold min-w-[20px]">{i + 1}.</span>
-                  <span className="text-[#94a3b8]">{step}</span>
+                  <span className="text-[#94a3b8]">
+                    {step.text}
+                    {step.link && <> — <ToolLink href={step.link.href}>{step.link.label}</ToolLink></>}
+                  </span>
                 </div>
               ))}
             </div>
@@ -97,16 +101,25 @@ export default function Phase6Section() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
           {[
-            { name: 'Render.com', badge: 'Empfehlung', desc: 'Extrem anfängerfreundlich. Perfekt, um Backends und Datenbanken (PostgreSQL) kostenlos zum Laufen zu bringen.' },
-            { name: 'Railway.app', badge: 'Alternative', desc: 'Ähnlich wie Render, tolle Benutzeroberfläche, funktioniert ebenfalls super mit GitHub.' },
+            { name: 'Render.com', href: 'https://render.com', badge: 'Empfehlung', desc: 'Extrem anfängerfreundlich. Perfekt, um Backends und Datenbanken (PostgreSQL) kostenlos zum Laufen zu bringen.' },
+            { name: 'Railway.app', href: 'https://railway.app', badge: 'Alternative', desc: 'Ähnlich wie Render, tolle Benutzeroberfläche, funktioniert ebenfalls super mit GitHub.' },
           ].map((platform) => (
-            <div key={platform.name} className="bg-[#0a1628] border border-[#162840] rounded-none p-5 hover:border-[#00d4ff]/30 transition-colors duration-200">
+            <a
+              key={platform.name}
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0a1628] border border-[#162840] rounded-none p-5 hover:border-[#00d4ff]/30 transition-colors duration-200 block group"
+            >
               <div className="flex items-center justify-between mb-3">
-                <p className="font-semibold text-[#e2e8f0] text-sm">{platform.name}</p>
+                <p className="font-semibold text-[#e2e8f0] text-sm flex items-center gap-1.5">
+                  {platform.name}
+                  <ExternalLink size={11} className="text-[#475569] group-hover:text-[#00d4ff] transition-colors duration-150" />
+                </p>
                 <span className="text-xs bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 px-2 py-0.5 rounded-sm">{platform.badge}</span>
               </div>
               <p className="text-xs text-[#94a3b8]">{platform.desc}</p>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -118,7 +131,10 @@ export default function Phase6Section() {
             {renderSteps.map((step, i) => (
               <div key={i} className="flex gap-3 text-xs">
                 <span className="text-[#00d4ff] font-mono font-bold min-w-[20px]">{i + 1}.</span>
-                <span className="text-[#94a3b8]">{step}</span>
+                <span className="text-[#94a3b8]">
+                  {step.text}
+                  {step.link && <> — <ToolLink href={step.link.href}>{step.link.label}</ToolLink></>}
+                </span>
               </div>
             ))}
           </div>

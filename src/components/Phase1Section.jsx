@@ -2,6 +2,7 @@ import { FileText, CircleCheck as CheckCircle, Lightbulb } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import CodeBlock from './CodeBlock';
 import Callout from './Callout';
+import ToolLink from './ToolLink';
 
 const specKitCmd = `uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME>`;
 const specExample = `"Die Architektur basiert auf einem monolithischen Node.js/Express-Backend.
@@ -77,7 +78,7 @@ export default function Phase1Section() {
         <p>
           Bevor wir Code generieren, brauchen wir einen Plan. Die KI braucht Kontext, um in deinem Sinne zu handeln.
           Hier machen sich die Prinzipien des <strong className="text-[#e2e8f0]">Spec-Driven Development (SDD)</strong> bezahlt,
-          wie sie kürzlich auch von GitHub in einem neuen Open-Source-Toolkit ("Spec Kit") hervorgehoben wurden.
+          wie sie kürzlich auch von <ToolLink href="https://github.com">GitHub</ToolLink> in einem neuen Open-Source-Toolkit (<ToolLink href="https://github.com/github/spec-kit">Spec Kit</ToolLink>) hervorgehoben wurden.
         </p>
 
         <div className="bg-[#0a1628] border border-[#162840] rounded-none p-5">
@@ -124,7 +125,7 @@ export default function Phase1Section() {
         <p className="text-[#94a3b8] text-sm mb-5">
           Um der KI die richtigen Leitplanken zu geben, ist es enorm wichtig, grundlegende Architekturmuster zu benennen.
           Eine der besten Anlaufstellen ist das{' '}
-          <span className="text-[#00d4ff]">System Design 101 Repository von ByteByteGo</span>.
+          <ToolLink href="https://github.com/ByteByteGoHq/system-design-101">System Design 101 Repository von ByteByteGo</ToolLink>.
           Hier sind die wichtigsten Architektur-Entscheidungen, die in deine Spec gehören:
         </p>
         <div className="space-y-4">
@@ -157,10 +158,10 @@ export default function Phase1Section() {
       <div className="mt-8">
         <h3 className="text-lg font-semibold text-[#e2e8f0] mb-4">So gehst du vor</h3>
         <p className="text-[#94a3b8] text-sm mb-3">
-          Nutze das strukturierte GitHub Spec Kit im Terminal:
+          Nutze das strukturierte <ToolLink href="https://github.com/github/spec-kit">GitHub Spec Kit</ToolLink> im Terminal:
         </p>
         <CodeBlock code={specKitCmd} language="terminal" />
-        <p className="text-[#94a3b8] text-sm my-3">Oder starte mit diesem KI-Prompt (z.B. in Gemini):</p>
+        <p className="text-[#94a3b8] text-sm my-3">Oder starte mit diesem KI-Prompt (z.B. in <ToolLink href="https://gemini.google.com">Gemini</ToolLink>):</p>
         <CodeBlock code={aiPrompt} language="prompt" />
       </div>
 

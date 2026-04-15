@@ -2,6 +2,7 @@ import { Terminal, FlaskConical, Bug, Globe, Code as Code2 } from 'lucide-react'
 import SectionHeader from './SectionHeader';
 import CodeBlock from './CodeBlock';
 import Callout from './Callout';
+import ToolLink from './ToolLink';
 
 const debugFormula = `"Ich habe versucht, [Aktion, z.B. Server zu starten].
 Dabei ist im [Chrome Console / VS Code Terminal] folgender Fehler aufgetreten:
@@ -56,10 +57,21 @@ export default function Phase5Section() {
       <div className="bg-[#0a1628] border border-[#162840] rounded-none p-5 mb-8">
         <p className="text-xs font-semibold text-[#475569] uppercase tracking-wide mb-3">Die Tools</p>
         <div className="flex flex-wrap gap-2">
-          {['Antigravity', 'Gemini CLI', 'Cursor', 'GitHub Copilot Workspace'].map((tool) => (
-            <span key={tool} className="text-xs bg-[#0a1628] border border-[#162840] text-[#94a3b8] px-3 py-1.5 rounded-sm font-mono">
-              {tool}
-            </span>
+          {[
+            { name: 'Antigravity', href: 'https://antigravity.dev' },
+            { name: 'Gemini CLI', href: 'https://github.com/google-gemini/gemini-cli' },
+            { name: 'Cursor', href: 'https://cursor.com' },
+            { name: 'GitHub Copilot Workspace', href: 'https://githubnext.com/projects/copilot-workspace' },
+          ].map((tool) => (
+            <a
+              key={tool.name}
+              href={tool.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs bg-[#0a1628] border border-[#162840] text-[#94a3b8] px-3 py-1.5 rounded-sm font-mono hover:border-[#00d4ff]/40 hover:text-[#00d4ff] transition-colors duration-150"
+            >
+              {tool.name} ↗
+            </a>
           ))}
         </div>
       </div>

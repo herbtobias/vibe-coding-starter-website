@@ -1,5 +1,6 @@
 import { Layers, Smartphone, Database, Building2 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
+import ToolLink from './ToolLink';
 import { techStacks } from '../data/content';
 
 const icons = [Layers, Smartphone, Database, Building2];
@@ -25,7 +26,7 @@ export default function Phase1_1Section() {
       <div className="space-y-4 text-[#94a3b8] text-base leading-relaxed mb-8">
         <p>
           Die Wahl der Technologien ist entscheidend. Die goldene Regel für Vibe Coding lautet:{' '}
-          <strong className="text-[#00d4ff]">Wähle Mainstream-Technologien!</strong> KIs wie Gemini oder Copilot wurden
+          <strong className="text-[#00d4ff]">Wähle Mainstream-Technologien!</strong> KIs wie <ToolLink href="https://gemini.google.com">Gemini</ToolLink> oder <ToolLink href="https://github.com/features/copilot">Copilot</ToolLink> wurden
           mit Milliarden Zeilen Code von beliebten Frameworks trainiert. Wenn du sehr exotische Programmiersprachen wählst,
           wird die KI öfter Fehler machen (halluzinieren).
         </p>

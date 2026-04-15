@@ -1,11 +1,12 @@
 import { GitBranch, Plus, Lock, BookOpen } from 'lucide-react';
 import SectionHeader from './SectionHeader';
+import ToolLink from './ToolLink';
 
 const steps = [
-  { icon: GitBranch, title: 'GitHub einloggen', desc: 'Logge dich bei github.com in deinen Account ein.' },
-  { icon: Plus, title: 'Neues Repository erstellen', desc: 'Klicke auf "New" und nenne das Repo z.B. mein-vibe-projekt.' },
-  { icon: Lock, title: 'Sichtbarkeit wählen', desc: 'Setze es auf "Public" oder "Private" und füge eine README.md hinzu.' },
-  { icon: BookOpen, title: 'Repo klonen', desc: 'Klone das Repo auf deinen lokalen Rechner mit git clone.' },
+  { icon: GitBranch, title: 'GitHub einloggen', desc: 'Logge dich bei github.com in deinen Account ein.', href: 'https://github.com' },
+  { icon: Plus, title: 'Neues Repository erstellen', desc: 'Klicke auf "New" und nenne das Repo z.B. mein-vibe-projekt.', href: 'https://github.com/new' },
+  { icon: Lock, title: 'Sichtbarkeit wählen', desc: 'Setze es auf "Public" oder "Private" und füge eine README.md hinzu.', href: null },
+  { icon: BookOpen, title: 'Repo klonen', desc: 'Klone das Repo auf deinen lokalen Rechner mit git clone.', href: null },
 ];
 
 export default function Phase3Section() {
@@ -20,7 +21,7 @@ export default function Phase3Section() {
 
       <div className="text-[#94a3b8] text-base leading-relaxed mb-8">
         <p>
-          Auch Vibe Coder brauchen Versionskontrolle. Hier speichern wir unseren Fortschritt, falls die KI mal
+          Auch Vibe Coder brauchen Versionskontrolle. Hier speichern wir unseren Fortschritt auf <ToolLink href="https://github.com">GitHub</ToolLink>, falls die KI mal
           "halluziniert" und wir einen Schritt zurückgehen müssen.
         </p>
       </div>
@@ -28,17 +29,25 @@ export default function Phase3Section() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {steps.map((step, i) => {
           const Icon = step.icon;
+          const Card = step.href ? 'a' : 'div';
           return (
-            <div key={i} className="bg-[#0a1628] border border-[#162840] rounded-none p-5 hover:border-[#00d4ff]/30 transition-colors duration-200">
+            <Card
+              key={i}
+              {...(step.href ? { href: step.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="bg-[#0a1628] border border-[#162840] rounded-none p-5 hover:border-[#00d4ff]/30 transition-colors duration-200 group block"
+            >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-none bg-[#0a1628] border border-[#162840] flex items-center justify-center">
                   <Icon size={16} className="text-[#00d4ff]" />
                 </div>
                 <span className="text-xs font-mono text-[#475569]">Schritt {String(i + 1).padStart(2, '0')}</span>
               </div>
-              <h4 className="font-semibold text-[#e2e8f0] text-sm mb-1">{step.title}</h4>
+              <h4 className="font-semibold text-[#e2e8f0] text-sm mb-1 flex items-center gap-1.5">
+                {step.title}
+                {step.href && <span className="text-[#475569] group-hover:text-[#00d4ff] transition-colors duration-150 text-xs">↗</span>}
+              </h4>
               <p className="text-xs text-[#94a3b8] leading-relaxed">{step.desc}</p>
-            </div>
+            </Card>
           );
         })}
       </div>
