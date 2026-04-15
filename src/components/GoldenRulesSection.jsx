@@ -1,41 +1,33 @@
-import { Brain, Footprints, RefreshCw, Heart, Waves } from 'lucide-react';
+import { Brain, Footprints, RefreshCw, Heart, Flame, ArrowRight } from 'lucide-react';
 
 const rules = [
   {
     icon: Brain,
     color: 'text-[#00d4ff]',
-    bg: 'bg-[#00d4ff]/10',
-    border: 'border-[#00d4ff]/20',
     title: 'Denk wie ein Product Manager',
     description: 'Du bist der Architekt. Fokussiere dich auf das "Was" und "Warum", die KI kümmert sich um das "Wie".',
   },
   {
     icon: Footprints,
     color: 'text-[#10b981]',
-    bg: 'bg-[#10b981]/10',
-    border: 'border-[#10b981]/20',
     title: 'Kleine Schritte (Baby Steps)',
     description: 'Lass die KI nicht die ganze App auf einmal bauen. Mach Feature für Feature. Zuerst das UI, dann das Routing, dann das Backend.',
   },
   {
     icon: RefreshCw,
     color: 'text-[#00d4ff]',
-    bg: 'bg-[#00d4ff]/10',
-    border: 'border-[#00d4ff]/20',
     title: 'Wenn es feststeckt, starte neu',
     description: 'Manchmal verrennt sich die KI in eine Sackgasse. Lösche den schlechten Code, mach einen Git-Reset und starte den Prompt neu – vielleicht etwas anders formuliert.',
   },
   {
     icon: Heart,
     color: 'text-[#ec4899]',
-    bg: 'bg-[#ec4899]/10',
-    border: 'border-[#ec4899]/20',
     title: 'Vibe Check',
     description: 'Wenn sich der Code nicht gut anfühlt, sag es der KI. "Das ist zu kompliziert geschrieben, bitte refactore das in saubere, kleinere Komponenten."',
   },
 ];
 
-export default function GoldenRulesSection() {
+export default function GoldenRulesSection({ onAdvanced }) {
   return (
     <section id="golden-rules" className="mb-16 scroll-mt-20">
       <div className="mb-10">
@@ -101,6 +93,41 @@ export default function GoldenRulesSection() {
           Viel Spaß beim Erschaffen!
         </p>
         <p className="text-[#475569] text-sm">Du dirigierst jetzt Software, anstatt sie mühsam zusammenzuschrauben. 2026 ist dein Jahr.</p>
+      </div>
+
+      <div className="mt-6 relative overflow-hidden border border-[#f59e0b]/30 bg-gradient-to-br from-[#f59e0b]/10 via-[#0a1628] to-[#060d1a] p-8">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#f59e0b]/5 blur-[80px] pointer-events-none" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-2 mb-3">
+            <Flame size={14} className="text-[#f59e0b]" />
+            <span className="text-[10px] font-mono font-bold text-[#f59e0b] uppercase tracking-[0.25em]">
+              Bereit für mehr?
+            </span>
+          </div>
+          <h3
+            className="font-black text-[#e2e8f0] uppercase leading-none mb-3"
+            style={{
+              fontFamily: "'Bebas Neue', 'Inter', sans-serif",
+              fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+              letterSpacing: '0.02em',
+            }}
+          >
+            Advanced Track: Mobile Apps & Stores
+          </h3>
+          <p className="text-[#94a3b8] text-sm leading-relaxed mb-6 max-w-xl">
+            Du hast den Basis-Guide gemeistert. Jetzt geht es weiter: Native Android & iOS Apps bauen,
+            hybride Container-Apps mit Capacitor, Kotlin Multiplatform und der Release in den Play Store
+            & App Store – alles mit KI-Support.
+          </p>
+          <button
+            onClick={onAdvanced}
+            className="inline-flex items-center gap-2 bg-[#f59e0b] text-black font-bold text-sm px-6 py-3 uppercase tracking-wider hover:bg-[#d97706] transition-colors duration-150"
+          >
+            <Flame size={14} />
+            Advanced Guide öffnen
+            <ArrowRight size={14} />
+          </button>
+        </div>
       </div>
     </section>
   );

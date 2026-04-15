@@ -1,8 +1,9 @@
-import { X } from 'lucide-react';
-import { Waves } from 'lucide-react';
+import { X, Waves, Flame } from 'lucide-react';
 import { navItems } from '../data/content';
 
-export default function MobileMenu({ isOpen, onClose, activeSection }) {
+const mainNavItems = navItems.filter((item) => !item.id.startsWith('advanced'));
+
+export default function MobileMenu({ isOpen, onClose, activeSection, onAdvanced }) {
   if (!isOpen) return null;
 
   return (
@@ -21,7 +22,7 @@ export default function MobileMenu({ isOpen, onClose, activeSection }) {
           </button>
         </div>
         <nav className="p-3 space-y-px">
-          {navItems.map((item) => {
+          {mainNavItems.map((item) => {
             const isActive = activeSection === item.id;
             const isSubItem = item.phase && item.phase.includes('.');
 
@@ -46,6 +47,18 @@ export default function MobileMenu({ isOpen, onClose, activeSection }) {
               </a>
             );
           })}
+
+          <div className="pt-3 pb-1">
+            <div className="h-px bg-[#122035]" />
+          </div>
+
+          <button
+            onClick={() => { onClose(); onAdvanced(); }}
+            className="w-full flex items-center gap-2 px-2 py-2 text-[13px] transition-all duration-150 border-l-2 border-[#f59e0b]/40 bg-[#f59e0b]/5 hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]"
+          >
+            <Flame size={12} className="text-[#f59e0b] shrink-0" />
+            <span className="truncate text-[#f59e0b] font-semibold">Advanced: Mobile & Stores</span>
+          </button>
         </nav>
       </div>
     </div>

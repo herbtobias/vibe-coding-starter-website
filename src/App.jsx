@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, Waves } from 'lucide-react';
+import { Menu, Waves, Flame } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import MobileMenu from './components/MobileMenu';
 import PrintButton from './components/PrintButton';
@@ -13,7 +13,7 @@ import Phase4Section from './components/Phase4Section';
 import Phase5Section from './components/Phase5Section';
 import Phase6Section from './components/Phase6Section';
 import GoldenRulesSection from './components/GoldenRulesSection';
-import AdvancedSection from './components/AdvancedSection';
+import AdvancedPage from './pages/AdvancedPage';
 import { navItems } from './data/content';
 
 function Divider() {
@@ -26,13 +26,20 @@ function Divider() {
   );
 }
 
+const mainNavItems = navItems.filter((item) => !item.id.startsWith('advanced'));
+
 export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('intro');
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const observerRef = useRef(null);
 
   useEffect(() => {
-    const ids = navItems.map((item) => item.id);
+    if (showAdvanced) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const ids = mainNavItems.map((item) => item.id);
     const elements = ids.map((id) => document.getElementById(id)).filter(Boolean);
 
     observerRef.current = new IntersectionObserver(
@@ -50,7 +57,23 @@ export default function App() {
 
     elements.forEach((el) => observerRef.current.observe(el));
     return () => observerRef.current?.disconnect();
-  }, []);
+  }, [showAdvanced]);
+
+  const goToAdvanced = () => {
+    setShowAdvanced(true);
+    setMobileOpen(false);
+  };
+
+  const goBack = () => {
+    setShowAdvanced(false);
+    setTimeout(() => {
+      document.getElementById('golden-rules')?.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  };
+
+  if (showAdvanced) {
+    return <AdvancedPage onBack={goBack} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#060d1a]">
@@ -73,7 +96,14 @@ export default function App() {
             </a>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-[10px] font-mono text-[#00d4ff] bg-[#00d4ff]/10 border border-[#00d4ff]/20 px-2 py-0.5 uppercase tracking-widest">
+            <button
+              onClick={goToAdvanced}
+              className="flex items-center gap-1.5 bg-[#f59e0b] text-black font-bold text-[11px] px-3 py-1.5 uppercase tracking-wider hover:bg-[#d97706] transition-colors duration-150"
+            >
+              <Flame size={11} />
+              <span>Advanced</span>
+            </button>
+            <span className="text-[10px] font-mono text-[#00d4ff] bg-[#00d4ff]/10 border border-[#00d4ff]/20 px-2 py-0.5 uppercase tracking-widest hidden sm:inline">
               2026 Edition
             </span>
             <PrintButton />
@@ -85,15 +115,16 @@ export default function App() {
         isOpen={mobileOpen}
         onClose={() => setMobileOpen(false)}
         activeSection={activeSection}
+        onAdvanced={goToAdvanced}
       />
 
       <div className="max-w-screen-2xl mx-auto flex pt-12">
         <aside className="hidden lg:block w-60 xl:w-64 shrink-0 sticky top-12 h-[calc(100vh-48px)] overflow-y-auto border-r border-[#122035] py-8 px-4">
-          <Sidebar activeSection={activeSection} />
+          <Sidebar activeSection={activeSection} onAdvanced={goToAdvanced} />
         </aside>
 
         <main className="flex-1 min-w-0">
-          <HeroSection />
+          <HeroSection onAdvanced={goToAdvanced} />
           <IntroSection />
 
           <div className="max-w-3xl mx-auto px-6 py-16">
@@ -111,9 +142,7 @@ export default function App() {
             <Divider />
             <Phase6Section />
             <Divider />
-            <GoldenRulesSection />
-            <Divider />
-            <AdvancedSection />
+            <GoldenRulesSection onAdvanced={goToAdvanced} />
           </div>
         </main>
       </div>
