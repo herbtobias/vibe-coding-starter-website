@@ -11,7 +11,7 @@ export default function Sidebar({ activeSection }) {
       </div>
       {navItems.map((item) => {
         const isActive = activeSection === item.id;
-        const isSubItem = item.phase && item.phase.includes('.');
+        const isSubItem = (item.phase && item.phase.includes('.')) || item.sub;
 
         return (
           <a

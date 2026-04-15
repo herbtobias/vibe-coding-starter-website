@@ -14,6 +14,13 @@ export const navItems = [
   { id: 'phase6-2', label: '6.2 Backend hosten', phase: '6.2' },
   { id: 'phase6-3', label: '6.3 Env Variables', phase: '6.3' },
   { id: 'golden-rules', label: 'Goldene Regeln', phase: null },
+  { id: 'advanced', label: 'Advanced: Mobile & Stores', phase: null },
+  { id: 'advanced-android', label: 'Native Android (Studio)', phase: null, sub: true },
+  { id: 'advanced-ios', label: 'Native iOS (Xcode)', phase: null, sub: true },
+  { id: 'advanced-hybrid', label: 'Hybride Apps (Capacitor)', phase: null, sub: true },
+  { id: 'advanced-kmp', label: 'Kotlin Multiplatform', phase: null, sub: true },
+  { id: 'advanced-testing', label: 'App-Testing', phase: null, sub: true },
+  { id: 'advanced-release', label: 'Release / Stores', phase: null, sub: true },
 ];
 
 export const techStacks = [

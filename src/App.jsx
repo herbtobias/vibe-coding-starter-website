@@ -13,6 +13,7 @@ import Phase4Section from './components/Phase4Section';
 import Phase5Section from './components/Phase5Section';
 import Phase6Section from './components/Phase6Section';
 import GoldenRulesSection from './components/GoldenRulesSection';
+import AdvancedSection from './components/AdvancedSection';
 import { navItems } from './data/content';
 
 function Divider() {
@@ -111,6 +112,8 @@ export default function App() {
             <Phase6Section />
             <Divider />
             <GoldenRulesSection />
+            <Divider />
+            <AdvancedSection />
           </div>
         </main>
       </div>
