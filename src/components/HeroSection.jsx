@@ -40,9 +40,8 @@ export default function HeroSection() {
         </h1>
 
         <div className="mt-10 max-w-2xl">
-          <p className="text-[#999] text-base leading-relaxed border-l-2 border-[#00d4ff] pl-5">
-            Willkommen in der Zukunft der Softwareentwicklung! Beim Vibe Coding geht es nicht mehr darum,
-            sich stundenlang mit fehlenden Semikolons herumzuschlagen.
+          <p className="text-[#94a3b8] text-base leading-relaxed border-l-2 border-[#00d4ff] pl-5">
+            Stell dir vor, die Barriere zwischen deiner genialen Idee und dem fertigen Produkt wäre plötzlich verschwunden.
             Du gibst den <strong className="text-[#e2e8f0]">Vibe</strong> vor — die KI erledigt die harte Arbeit.
           </p>
         </div>

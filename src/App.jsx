@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import MobileMenu from './components/MobileMenu';
 import PrintButton from './components/PrintButton';
 import HeroSection from './components/HeroSection';
+import IntroSection from './components/IntroSection';
 import Phase1Section from './components/Phase1Section';
 import Phase1_1Section from './components/Phase1_1Section';
 import Phase2Section from './components/Phase2Section';
@@ -92,6 +93,7 @@ export default function App() {
 
         <main className="flex-1 min-w-0">
           <HeroSection />
+          <IntroSection />
 
           <div className="max-w-3xl mx-auto px-6 py-16">
             <Phase1Section />
