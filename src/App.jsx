@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, Waves, Flame } from 'lucide-react';
+import { Menu, Waves, Flame, BookOpen } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import MobileMenu from './components/MobileMenu';
 import PrintButton from './components/PrintButton';
@@ -14,6 +14,7 @@ import Phase5Section from './components/Phase5Section';
 import Phase6Section from './components/Phase6Section';
 import GoldenRulesSection from './components/GoldenRulesSection';
 import AdvancedPage from './pages/AdvancedPage';
+import ResourcesPage from './pages/ResourcesPage';
 import { navItems } from './data/content';
 
 function Divider() {
@@ -32,10 +33,11 @@ export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('intro');
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showResources, setShowResources] = useState(false);
   const observerRef = useRef(null);
 
   useEffect(() => {
-    if (showAdvanced) {
+    if (showAdvanced || showResources) {
       window.scrollTo(0, 0);
       return;
     }
@@ -57,22 +59,34 @@ export default function App() {
 
     elements.forEach((el) => observerRef.current.observe(el));
     return () => observerRef.current?.disconnect();
-  }, [showAdvanced]);
+  }, [showAdvanced, showResources]);
 
   const goToAdvanced = () => {
     setShowAdvanced(true);
+    setShowResources(false);
+    setMobileOpen(false);
+  };
+
+  const goToResources = () => {
+    setShowResources(true);
+    setShowAdvanced(false);
     setMobileOpen(false);
   };
 
   const goBack = () => {
     setShowAdvanced(false);
+    setShowResources(false);
     setTimeout(() => {
       document.getElementById('golden-rules')?.scrollIntoView({ behavior: 'smooth' });
     }, 50);
   };
 
   if (showAdvanced) {
-    return <AdvancedPage onBack={goBack} />;
+    return <AdvancedPage onBack={goBack} onResources={goToResources} />;
+  }
+
+  if (showResources) {
+    return <ResourcesPage onBack={goBack} />;
   }
 
   return (
@@ -95,7 +109,14 @@ export default function App() {
               </span>
             </a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={goToResources}
+              className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-[11px] font-mono uppercase tracking-wide px-2 py-1.5 border border-transparent hover:border-[#1e3a5f]"
+            >
+              <BookOpen size={12} />
+              <span className="hidden sm:inline">Ressourcen</span>
+            </button>
             <button
               onClick={goToAdvanced}
               className="flex items-center gap-1.5 bg-[#f59e0b] text-black font-bold text-[11px] px-3 py-1.5 uppercase tracking-wider hover:bg-[#d97706] transition-colors duration-150"

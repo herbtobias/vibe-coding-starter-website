@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Waves, ArrowLeft, Flame, Menu } from 'lucide-react';
+import { Waves, ArrowLeft, Flame, Menu, BookOpen } from 'lucide-react';
 import AdvancedSection from '../components/AdvancedSection';
 import AdvancedTableOfContents from '../components/AdvancedTableOfContents';
 import AdvancedSidebar from '../components/AdvancedSidebar';
@@ -17,7 +17,7 @@ function MobileAdvancedMenu({ isOpen, onClose, onBack }) {
   );
 }
 
-export default function AdvancedPage({ onBack }) {
+export default function AdvancedPage({ onBack, onResources }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -52,7 +52,14 @@ export default function AdvancedPage({ onBack }) {
               </span>
             </a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onResources}
+              className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-[11px] font-mono uppercase tracking-wide px-2 py-1.5 border border-transparent hover:border-[#1e3a5f]"
+            >
+              <BookOpen size={12} />
+              <span className="hidden sm:inline">Ressourcen</span>
+            </button>
             <div className="flex items-center gap-1.5 bg-[#f59e0b]/10 border border-[#f59e0b]/30 px-2.5 py-0.5">
               <Flame size={10} className="text-[#f59e0b]" />
               <span className="text-[10px] font-mono text-[#f59e0b] uppercase tracking-widest">Advanced</span>
