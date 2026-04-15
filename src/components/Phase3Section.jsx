@@ -15,10 +15,10 @@ export default function Phase3Section() {
         phase="3"
         title="Setup – Das GitHub Repository"
         icon={GitBranch}
-        iconColor="text-[#f0ede8]"
+        iconColor="text-[#e2e8f0]"
       />
 
-      <div className="text-[#777] text-base leading-relaxed mb-8">
+      <div className="text-[#94a3b8] text-base leading-relaxed mb-8">
         <p>
           Auch Vibe Coder brauchen Versionskontrolle. Hier speichern wir unseren Fortschritt, falls die KI mal
           "halluziniert" und wir einen Schritt zurückgehen müssen.
@@ -29,15 +29,15 @@ export default function Phase3Section() {
         {steps.map((step, i) => {
           const Icon = step.icon;
           return (
-            <div key={i} className="bg-[#111] border border-[#1f1f1f] rounded-none p-5 hover:border-[#f97316]/30 transition-colors duration-200">
+            <div key={i} className="bg-[#0a1628] border border-[#162840] rounded-none p-5 hover:border-[#00d4ff]/30 transition-colors duration-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-none bg-[#111] border border-[#1f1f1f] flex items-center justify-center">
-                  <Icon size={16} className="text-[#f97316]" />
+                <div className="w-8 h-8 rounded-none bg-[#0a1628] border border-[#162840] flex items-center justify-center">
+                  <Icon size={16} className="text-[#00d4ff]" />
                 </div>
-                <span className="text-xs font-mono text-[#444]">Schritt {String(i + 1).padStart(2, '0')}</span>
+                <span className="text-xs font-mono text-[#475569]">Schritt {String(i + 1).padStart(2, '0')}</span>
               </div>
-              <h4 className="font-semibold text-[#f0ede8] text-sm mb-1">{step.title}</h4>
-              <p className="text-xs text-[#777] leading-relaxed">{step.desc}</p>
+              <h4 className="font-semibold text-[#e2e8f0] text-sm mb-1">{step.title}</h4>
+              <p className="text-xs text-[#94a3b8] leading-relaxed">{step.desc}</p>
             </div>
           );
         })}

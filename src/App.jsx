@@ -16,9 +16,9 @@ import { navItems } from './data/content';
 function Divider() {
   return (
     <div className="flex items-center gap-4 my-16">
-      <div className="flex-1 h-px bg-[#1a1a1a]" />
-      <div className="w-1.5 h-1.5 bg-[#f97316] rotate-45" />
-      <div className="flex-1 h-px bg-[#1a1a1a]" />
+      <div className="flex-1 h-px bg-[#122035]" />
+      <div className="w-1.5 h-1.5 bg-[#00d4ff] rotate-45" />
+      <div className="flex-1 h-px bg-[#122035]" />
     </div>
   );
 }
@@ -50,27 +50,27 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
-      <header className="fixed top-0 left-0 right-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#1a1a1a]">
+    <div className="min-h-screen bg-[#060d1a]">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-[#060d1a]/95 backdrop-blur-sm border-b border-[#122035]">
         <div className="max-w-screen-2xl mx-auto px-5 h-12 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-1.5 text-[#444] hover:text-[#f0ede8] transition-colors"
+              className="lg:hidden p-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors"
             >
               <Menu size={18} />
             </button>
             <a href="#intro" className="flex items-center gap-2">
-              <span className="w-5 h-5 bg-[#f97316] flex items-center justify-center">
+              <span className="w-5 h-5 bg-[#00d4ff] flex items-center justify-center">
                 <Waves size={11} className="text-black" />
               </span>
-              <span className="font-black text-sm text-[#f0ede8] tracking-tight uppercase hidden sm:block">
+              <span className="font-black text-sm text-[#e2e8f0] tracking-tight uppercase hidden sm:block">
                 Vibe Coding Guide
               </span>
             </a>
           </div>
           <div>
-            <span className="text-[10px] font-mono text-[#f97316] bg-[#f97316]/10 border border-[#f97316]/20 px-2 py-0.5 uppercase tracking-widest">
+            <span className="text-[10px] font-mono text-[#00d4ff] bg-[#00d4ff]/10 border border-[#00d4ff]/20 px-2 py-0.5 uppercase tracking-widest">
               2026 Edition
             </span>
           </div>
@@ -84,7 +84,7 @@ export default function App() {
       />
 
       <div className="max-w-screen-2xl mx-auto flex pt-12">
-        <aside className="hidden lg:block w-60 xl:w-64 shrink-0 sticky top-12 h-[calc(100vh-48px)] overflow-y-auto border-r border-[#1a1a1a] py-8 px-4">
+        <aside className="hidden lg:block w-60 xl:w-64 shrink-0 sticky top-12 h-[calc(100vh-48px)] overflow-y-auto border-r border-[#122035] py-8 px-4">
           <Sidebar activeSection={activeSection} />
         </aside>
 

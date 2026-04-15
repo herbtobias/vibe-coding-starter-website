@@ -33,7 +33,7 @@ export default function Phase6Section() {
         icon={Rocket}
       />
 
-      <div className="text-[#777] text-base leading-relaxed mb-8">
+      <div className="text-[#94a3b8] text-base leading-relaxed mb-8">
         <p>
           Dein Code funktioniert lokal auf deinem Rechner perfekt? Großartig! Jetzt ist es Zeit, die App der Welt zu zeigen.
           Das Beste daran: Du musst keine Server mieten oder Linux-Befehle lernen. Dank moderner Cloud-Plattformen ist
@@ -43,35 +43,35 @@ export default function Phase6Section() {
 
       <section id="phase6-1" className="mb-10 scroll-mt-20">
         <div className="flex items-center gap-2 mb-5">
-          <ExternalLink size={18} className="text-[#f97316]" />
-          <h3 className="text-xl font-bold text-[#f0ede8]">6.1 Das Frontend hosten (Websites & React-Apps)</h3>
+          <ExternalLink size={18} className="text-[#00d4ff]" />
+          <h3 className="text-xl font-bold text-[#e2e8f0]">6.1 Das Frontend hosten (Websites & React-Apps)</h3>
         </div>
 
-        <p className="text-[#777] text-sm mb-5">
+        <p className="text-[#94a3b8] text-sm mb-5">
           Für alles, was im Browser des Nutzers läuft (React, Next.js, HTML/CSS), gibt es einen unangefochtenen König für Vibe Coder.
         </p>
 
-        <div className="bg-[#111] border border-[#f97316]/30 rounded-none overflow-hidden mb-5">
-          <div className="flex items-center gap-3 px-5 py-4 bg-gradient-to-r from-[#f97316]/10 to-transparent border-b border-[#1f1f1f]">
-            <div className="w-8 h-8 rounded-none bg-[#0a0a0a] flex items-center justify-center">
+        <div className="bg-[#0a1628] border border-[#00d4ff]/30 rounded-none overflow-hidden mb-5">
+          <div className="flex items-center gap-3 px-5 py-4 bg-gradient-to-r from-[#00d4ff]/10 to-transparent border-b border-[#162840]">
+            <div className="w-8 h-8 rounded-none bg-[#060d1a] flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 76 65" fill="none">
                 <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="white"/>
               </svg>
             </div>
             <div>
-              <p className="font-bold text-[#f0ede8] text-sm">Vercel</p>
+              <p className="font-bold text-[#e2e8f0] text-sm">Vercel</p>
               <p className="text-xs text-[#10b981]">Kostenlos für Hobby-Projekte — Empfehlung</p>
             </div>
           </div>
           <div className="p-5">
-            <p className="text-xs text-[#777] mb-4 italic">
+            <p className="text-xs text-[#94a3b8] mb-4 italic">
               Vercel ist so magisch, dass es sich anfühlt wie Vibe Coding für Server.
             </p>
             <div className="space-y-2">
               {vercelSteps.map((step, i) => (
                 <div key={i} className="flex gap-3 text-xs">
-                  <span className="text-[#f97316] font-mono font-bold min-w-[20px]">{i + 1}.</span>
-                  <span className="text-[#777]">{step}</span>
+                  <span className="text-[#00d4ff] font-mono font-bold min-w-[20px]">{i + 1}.</span>
+                  <span className="text-[#94a3b8]">{step}</span>
                 </div>
               ))}
             </div>
@@ -86,11 +86,11 @@ export default function Phase6Section() {
 
       <section id="phase6-2" className="mb-10 scroll-mt-20">
         <div className="flex items-center gap-2 mb-5">
-          <Server size={18} className="text-[#f97316]" />
-          <h3 className="text-xl font-bold text-[#f0ede8]">6.2 Das Backend hosten (Node.js, Python, Datenbanken)</h3>
+          <Server size={18} className="text-[#00d4ff]" />
+          <h3 className="text-xl font-bold text-[#e2e8f0]">6.2 Das Backend hosten (Node.js, Python, Datenbanken)</h3>
         </div>
 
-        <p className="text-[#777] text-sm mb-5">
+        <p className="text-[#94a3b8] text-sm mb-5">
           Wenn du nicht nur ein Frontend hast, sondern auch einen echten Server (z.B. eine API mit Node.js/Express oder Python/FastAPI),
           brauchst du einen anderen Anbieter.
         </p>
@@ -100,25 +100,25 @@ export default function Phase6Section() {
             { name: 'Render.com', badge: 'Empfehlung', desc: 'Extrem anfängerfreundlich. Perfekt, um Backends und Datenbanken (PostgreSQL) kostenlos zum Laufen zu bringen.' },
             { name: 'Railway.app', badge: 'Alternative', desc: 'Ähnlich wie Render, tolle Benutzeroberfläche, funktioniert ebenfalls super mit GitHub.' },
           ].map((platform) => (
-            <div key={platform.name} className="bg-[#111] border border-[#1f1f1f] rounded-none p-5 hover:border-[#f97316]/30 transition-colors duration-200">
+            <div key={platform.name} className="bg-[#0a1628] border border-[#162840] rounded-none p-5 hover:border-[#00d4ff]/30 transition-colors duration-200">
               <div className="flex items-center justify-between mb-3">
-                <p className="font-semibold text-[#f0ede8] text-sm">{platform.name}</p>
+                <p className="font-semibold text-[#e2e8f0] text-sm">{platform.name}</p>
                 <span className="text-xs bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 px-2 py-0.5 rounded-sm">{platform.badge}</span>
               </div>
-              <p className="text-xs text-[#777]">{platform.desc}</p>
+              <p className="text-xs text-[#94a3b8]">{platform.desc}</p>
             </div>
           ))}
         </div>
 
-        <div className="border border-[#1f1f1f] rounded-none overflow-hidden">
-          <div className="px-5 py-3 bg-[#111] border-b border-[#1f1f1f]">
-            <p className="text-sm font-semibold text-[#f0ede8]">So gehst du vor (am Beispiel Render)</p>
+        <div className="border border-[#162840] rounded-none overflow-hidden">
+          <div className="px-5 py-3 bg-[#0a1628] border-b border-[#162840]">
+            <p className="text-sm font-semibold text-[#e2e8f0]">So gehst du vor (am Beispiel Render)</p>
           </div>
-          <div className="p-5 bg-[#111] space-y-2">
+          <div className="p-5 bg-[#0a1628] space-y-2">
             {renderSteps.map((step, i) => (
               <div key={i} className="flex gap-3 text-xs">
-                <span className="text-[#f97316] font-mono font-bold min-w-[20px]">{i + 1}.</span>
-                <span className="text-[#777]">{step}</span>
+                <span className="text-[#00d4ff] font-mono font-bold min-w-[20px]">{i + 1}.</span>
+                <span className="text-[#94a3b8]">{step}</span>
               </div>
             ))}
           </div>
@@ -128,7 +128,7 @@ export default function Phase6Section() {
       <section id="phase6-3" className="scroll-mt-20">
         <div className="flex items-center gap-2 mb-5">
           <Shield size={18} className="text-[#ef4444]" />
-          <h3 className="text-xl font-bold text-[#f0ede8]">6.3 Das Wichtigste beim Deployment: Umgebungsvariablen</h3>
+          <h3 className="text-xl font-bold text-[#e2e8f0]">6.3 Das Wichtigste beim Deployment: Umgebungsvariablen</h3>
         </div>
 
         <div className="bg-[#ef4444]/5 border border-[#ef4444]/40 rounded-none p-5 mb-6">
@@ -136,7 +136,7 @@ export default function Phase6Section() {
             <Shield size={16} className="text-[#ef4444]" />
             <p className="font-bold text-[#ef4444] text-sm uppercase tracking-wide">Sicherheitsrisiko!</p>
           </div>
-          <p className="text-[#777] text-sm leading-relaxed">
+          <p className="text-[#94a3b8] text-sm leading-relaxed">
             Wenn deine App Passwörter, API-Keys (wie deinen OpenAI/Gemini Key) oder Datenbank-Verbindungen nutzt,
             dürfen diese <strong className="text-[#ef4444]">niemals im Code stehen, den du zu GitHub pusht</strong>.
             Sonst kann sie jeder im Internet lesen!
@@ -144,14 +144,14 @@ export default function Phase6Section() {
         </div>
 
         <div className="space-y-5">
-          <div className="border border-[#1f1f1f] rounded-none overflow-hidden">
-            <div className="px-5 py-3 bg-[#111] border-b border-[#1f1f1f]">
-              <p className="text-sm font-semibold text-[#f0ede8]">Lokal: Die .env Datei verstecken</p>
+          <div className="border border-[#162840] rounded-none overflow-hidden">
+            <div className="px-5 py-3 bg-[#0a1628] border-b border-[#162840]">
+              <p className="text-sm font-semibold text-[#e2e8f0]">Lokal: Die .env Datei verstecken</p>
             </div>
-            <div className="p-5 bg-[#111]">
-              <p className="text-xs text-[#777] mb-3">
+            <div className="p-5 bg-[#0a1628]">
+              <p className="text-xs text-[#94a3b8] mb-3">
                 Du speicherst Secrets auf deinem Rechner in einer versteckten Datei namens{' '}
-                <code className="text-[#f97316] bg-[#f97316]/10 px-1.5 py-0.5 rounded font-mono">.env</code>.
+                <code className="text-[#00d4ff] bg-[#00d4ff]/10 px-1.5 py-0.5 rounded font-mono">.env</code>.
                 Damit diese Datei auf keinen Fall bei GitHub landet, musst du sie ignorieren.
                 So ignorierst du Dateien sicher (im Terminal):
               </p>
@@ -162,16 +162,16 @@ export default function Phase6Section() {
             </div>
           </div>
 
-          <div className="border border-[#1f1f1f] rounded-none overflow-hidden">
-            <div className="px-5 py-3 bg-[#111] border-b border-[#1f1f1f]">
-              <p className="text-sm font-semibold text-[#f0ede8]">Im Deployment: Environment Variables eintragen</p>
+          <div className="border border-[#162840] rounded-none overflow-hidden">
+            <div className="px-5 py-3 bg-[#0a1628] border-b border-[#162840]">
+              <p className="text-sm font-semibold text-[#e2e8f0]">Im Deployment: Environment Variables eintragen</p>
             </div>
-            <div className="p-5 bg-[#111]">
-              <p className="text-xs text-[#777] leading-relaxed">
+            <div className="p-5 bg-[#0a1628]">
+              <p className="text-xs text-[#94a3b8] leading-relaxed">
                 In Vercel oder Render gibt es in den Projekteinstellungen immer einen Punkt namens{' '}
-                <strong className="text-[#f0ede8]">"Environment Variables"</strong>. Hier trägst du deine Keys manuell ein
-                (z.B. Name: <code className="text-[#f97316] bg-[#f97316]/10 px-1 rounded font-mono text-xs">API_KEY</code>,
-                Value: <code className="text-[#f97316] bg-[#f59e0b]/10 px-1 rounded font-mono text-xs">12345-geheim</code>).
+                <strong className="text-[#e2e8f0]">"Environment Variables"</strong>. Hier trägst du deine Keys manuell ein
+                (z.B. Name: <code className="text-[#00d4ff] bg-[#00d4ff]/10 px-1 rounded font-mono text-xs">API_KEY</code>,
+                Value: <code className="text-[#00d4ff] bg-[#00d4ff]/10 px-1 rounded font-mono text-xs">12345-geheim</code>).
                 So hat der Live-Server Zugriff auf die Keys, ohne dass sie öffentlich in GitHub stehen.
               </p>
             </div>
