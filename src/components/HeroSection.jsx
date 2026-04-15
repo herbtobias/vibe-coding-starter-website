@@ -54,13 +54,6 @@ export default function HeroSection() {
             <Zap size={14} />
             Guide starten
           </a>
-          <a
-            href="#phase1"
-            className="inline-flex items-center gap-2 border border-[#1e3a5f] text-[#94a3b8] text-sm px-6 py-3 uppercase tracking-wider hover:border-[#00d4ff]/40 hover:text-[#e2e8f0] transition-all duration-150"
-          >
-            Inhaltsverzeichnis
-            <ArrowDown size={12} />
-          </a>
         </div>
 
         <div className="mt-12 flex flex-wrap gap-4">
