@@ -49,33 +49,33 @@ export default function Phase2Section() {
         icon={Palette}
       />
 
-      <div className="text-[#94a3b8] text-base leading-relaxed mb-6">
+      <div className="text-[#777] text-base leading-relaxed mb-6">
         <p>
           Jetzt bringen wir den Vibe auf den Bildschirm. Wir überspringen traditionelle Design-Tools wie{' '}
-          <span className="line-through text-[#475569]">Figma</span> und lassen KI direkt UI-Code generieren.
+          <span className="line-through text-[#444]">Figma</span> und lassen KI direkt UI-Code generieren.
         </p>
       </div>
 
-      <div className="bg-[#0d1f3c] border border-[#1e3a5f] rounded-xl p-5 mb-6">
+      <div className="bg-[#111] border border-[#1f1f1f] rounded-none p-5 mb-6">
         <div className="flex items-center gap-2 mb-2">
-          <ExternalLink size={14} className="text-[#00d4ff]" />
-          <span className="text-sm font-semibold text-[#00d4ff]">Das Tool: Google Stitch</span>
+          <ExternalLink size={14} className="text-[#f97316]" />
+          <span className="text-sm font-semibold text-[#f97316]">Das Tool: Google Stitch</span>
         </div>
-        <p className="text-sm text-[#94a3b8]">
+        <p className="text-sm text-[#777]">
           Ein KI-gestütztes UI-Generierungstool, das direkt Tailwind CSS Code ausgibt.
           Perfekt für den schnellen Einstieg ohne Design-Vorkenntnisse.
         </p>
       </div>
 
       <div className="mb-8">
-        <h3 className="text-lg font-semibold text-[#e2e8f0] mb-4">So gehst du vor</h3>
+        <h3 className="text-lg font-semibold text-[#f0ede8] mb-4">So gehst du vor</h3>
         <div className="space-y-3">
           {steps.map((step) => (
-            <div key={step.num} className="flex gap-4 items-start p-4 bg-[#0d1f3c] border border-[#1e3a5f] rounded-xl">
-              <span className="text-xl font-bold text-[#1e3a5f] font-mono min-w-[36px]">{step.num}</span>
+            <div key={step.num} className="flex gap-4 items-start p-4 bg-[#111] border border-[#1f1f1f] rounded-none">
+              <span className="text-xl font-bold text-[#1f1f1f] font-mono min-w-[36px]">{step.num}</span>
               <div>
-                <p className="text-sm text-[#94a3b8]">
-                  {step.action} <strong className="text-[#e2e8f0]">{step.highlight}</strong> — {step.desc}
+                <p className="text-sm text-[#777]">
+                  {step.action} <strong className="text-[#f0ede8]">{step.highlight}</strong> — {step.desc}
                 </p>
               </div>
             </div>
@@ -84,38 +84,38 @@ export default function Phase2Section() {
       </div>
 
       <div className="mb-2">
-        <p className="text-sm text-[#94a3b8] mb-2">Template-Prompt für Stitch:</p>
+        <p className="text-sm text-[#777] mb-2">Template-Prompt für Stitch:</p>
         <CodeBlock code={stitchPrompt} language="prompt" />
       </div>
 
       <div className="mt-10 mb-2">
         <div className="flex items-center gap-2 mb-5">
-          <Star size={16} className="text-[#00d4ff]" />
-          <h3 className="text-lg font-semibold text-[#e2e8f0]">Der Profi-Trick: Referenz-Bilder & Templates nutzen</h3>
+          <Star size={16} className="text-[#f97316]" />
+          <h3 className="text-lg font-semibold text-[#f0ede8]">Der Profi-Trick: Referenz-Bilder & Templates nutzen</h3>
         </div>
-        <p className="text-[#94a3b8] text-sm leading-relaxed mb-5">
+        <p className="text-[#777] text-sm leading-relaxed mb-5">
           KI-Modelle für Coden sind extrem gut darin, Bilder zu analysieren. Statt ein Design nur umständlich mit Worten
           zu beschreiben, solltest du dir Screenshots von Profi-Apps suchen und diese als Vorlage hochladen.
         </p>
 
         <div className="space-y-4 mb-6">
           {resources.map((res) => (
-            <div key={res.name} className="flex gap-4 p-4 bg-[#0d1f3c] border border-[#1e3a5f] rounded-xl hover:border-[#00d4ff]/30 transition-colors duration-200">
+            <div key={res.name} className="flex gap-4 p-4 bg-[#111] border border-[#1f1f1f] rounded-none hover:border-[#f97316]/30 transition-colors duration-200">
               <div className="flex flex-col items-center min-w-[60px]">
-                <Image size={18} className="text-[#475569] mb-1" />
-                <span className="text-xs text-[#00d4ff] bg-[#00d4ff]/10 px-2 py-0.5 rounded-full font-mono">{res.badge}</span>
+                <Image size={18} className="text-[#444] mb-1" />
+                <span className="text-xs text-[#f97316] bg-[#f97316]/10 px-2 py-0.5 rounded-sm font-mono">{res.badge}</span>
               </div>
               <div>
-                <p className="font-semibold text-[#e2e8f0] text-sm mb-1">
-                  {res.name} <span className="text-[#475569] font-normal">— {res.url}</span>
+                <p className="font-semibold text-[#f0ede8] text-sm mb-1">
+                  {res.name} <span className="text-[#444] font-normal">— {res.url}</span>
                 </p>
-                <p className="text-xs text-[#94a3b8] leading-relaxed">{res.desc}</p>
+                <p className="text-xs text-[#777] leading-relaxed">{res.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-sm font-semibold text-[#94a3b8] mb-2">Prompt mit Referenz-Screenshot:</p>
+        <p className="text-sm font-semibold text-[#777] mb-2">Prompt mit Referenz-Screenshot:</p>
         <CodeBlock code={referencePrompt} language="prompt" />
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { X } from 'lucide-react';
+import { Waves } from 'lucide-react';
 import { navItems } from '../data/content';
 
 export default function MobileMenu({ isOpen, onClose, activeSection }) {
@@ -6,15 +7,20 @@ export default function MobileMenu({ isOpen, onClose, activeSection }) {
 
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute top-0 left-0 bottom-0 w-72 bg-[#0a1628] border-r border-[#1e3a5f] overflow-y-auto">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#1e3a5f]">
-          <span className="font-semibold text-[#e2e8f0] text-sm">Inhaltsverzeichnis</span>
-          <button onClick={onClose} className="text-[#475569] hover:text-[#94a3b8] transition-colors">
-            <X size={18} />
+      <div className="absolute inset-0 bg-black/80" onClick={onClose} />
+      <div className="absolute top-0 left-0 bottom-0 w-64 bg-[#0a0a0a] border-r border-[#1a1a1a] overflow-y-auto">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-[#1a1a1a]">
+          <div className="flex items-center gap-2">
+            <span className="w-4 h-4 bg-[#f97316] flex items-center justify-center">
+              <Waves size={9} className="text-black" />
+            </span>
+            <span className="font-black text-xs text-[#f0ede8] uppercase tracking-tight">Vibe Guide</span>
+          </div>
+          <button onClick={onClose} className="text-[#333] hover:text-[#f0ede8] transition-colors">
+            <X size={16} />
           </button>
         </div>
-        <nav className="p-4 space-y-0.5">
+        <nav className="p-3 space-y-px">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             const isSubItem = item.phase && item.phase.includes('.');
@@ -22,18 +28,17 @@ export default function MobileMenu({ isOpen, onClose, activeSection }) {
             return (
               <a
                 key={item.id}
-                href={`#${item.id}`}
+                href={"#" + item.id}
                 onClick={onClose}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-200
-                  ${isSubItem ? 'pl-6' : ''}
-                  ${isActive
-                    ? 'bg-[#00d4ff]/10 text-[#00d4ff]'
-                    : 'text-[#475569] hover:text-[#94a3b8] hover:bg-[#0d1f3c]'
-                  }`}
+                className={"flex items-center gap-2 px-2 py-1.5 text-[13px] transition-all duration-150 border-l-2 " +
+                  (isSubItem ? 'pl-5 ' : '') +
+                  (isActive
+                    ? 'border-[#f97316] text-[#f0ede8] bg-[#f97316]/5'
+                    : 'border-transparent text-[#3a3a3a] hover:text-[#777]'
+                  )}
               >
                 {item.phase && (
-                  <span className={`text-xs font-mono font-medium min-w-[24px]
-                    ${isActive ? 'text-[#00d4ff]/70' : 'text-[#1e3a5f]'}`}>
+                  <span className={"text-[10px] font-mono min-w-[22px] " + (isActive ? 'text-[#f97316]' : 'text-[#2a2a2a]')}>
                     {item.phase}
                   </span>
                 )}

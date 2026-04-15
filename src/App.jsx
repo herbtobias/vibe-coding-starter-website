@@ -13,6 +13,16 @@ import Phase6Section from './components/Phase6Section';
 import GoldenRulesSection from './components/GoldenRulesSection';
 import { navItems } from './data/content';
 
+function Divider() {
+  return (
+    <div className="flex items-center gap-4 my-16">
+      <div className="flex-1 h-px bg-[#1a1a1a]" />
+      <div className="w-1.5 h-1.5 bg-[#f97316] rotate-45" />
+      <div className="flex-1 h-px bg-[#1a1a1a]" />
+    </div>
+  );
+}
+
 export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('intro');
@@ -40,23 +50,29 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050a14]">
-      <header className="fixed top-0 left-0 right-0 z-40 bg-[#050a14]/80 backdrop-blur-md border-b border-[#1e3a5f]">
-        <div className="max-w-screen-2xl mx-auto px-4 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+    <div className="min-h-screen bg-[#0a0a0a]">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#1a1a1a]">
+        <div className="max-w-screen-2xl mx-auto px-5 h-12 flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 text-[#475569] hover:text-[#94a3b8] transition-colors rounded-lg hover:bg-[#0d1f3c]"
+              className="lg:hidden p-1.5 text-[#444] hover:text-[#f0ede8] transition-colors"
             >
               <Menu size={18} />
             </button>
-            <a href="#intro" className="flex items-center gap-2 text-[#e2e8f0] hover:text-[#00d4ff] transition-colors">
-              <Waves size={18} className="text-[#00d4ff]" />
-              <span className="font-semibold text-sm hidden sm:block">Vibe Coding Guide</span>
+            <a href="#intro" className="flex items-center gap-2">
+              <span className="w-5 h-5 bg-[#f97316] flex items-center justify-center">
+                <Waves size={11} className="text-black" />
+              </span>
+              <span className="font-black text-sm text-[#f0ede8] tracking-tight uppercase hidden sm:block">
+                Vibe Coding Guide
+              </span>
             </a>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-[#475569] hidden sm:block font-mono">v2025</span>
+          <div>
+            <span className="text-[10px] font-mono text-[#f97316] bg-[#f97316]/10 border border-[#f97316]/20 px-2 py-0.5 uppercase tracking-widest">
+              2026 Edition
+            </span>
           </div>
         </div>
       </header>
@@ -67,29 +83,29 @@ export default function App() {
         activeSection={activeSection}
       />
 
-      <div className="max-w-screen-2xl mx-auto flex pt-14">
-        <aside className="hidden lg:block w-64 xl:w-72 shrink-0 sticky top-14 h-[calc(100vh-56px)] overflow-y-auto border-r border-[#1e3a5f] py-6 px-4">
+      <div className="max-w-screen-2xl mx-auto flex pt-12">
+        <aside className="hidden lg:block w-60 xl:w-64 shrink-0 sticky top-12 h-[calc(100vh-48px)] overflow-y-auto border-r border-[#1a1a1a] py-8 px-4">
           <Sidebar activeSection={activeSection} />
         </aside>
 
         <main className="flex-1 min-w-0">
           <HeroSection />
 
-          <div className="max-w-3xl mx-auto px-6 py-12">
+          <div className="max-w-3xl mx-auto px-6 py-16">
             <Phase1Section />
-            <div className="h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent my-12" />
+            <Divider />
             <Phase1_1Section />
-            <div className="h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent my-12" />
+            <Divider />
             <Phase2Section />
-            <div className="h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent my-12" />
+            <Divider />
             <Phase3Section />
-            <div className="h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent my-12" />
+            <Divider />
             <Phase4Section />
-            <div className="h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent my-12" />
+            <Divider />
             <Phase5Section />
-            <div className="h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent my-12" />
+            <Divider />
             <Phase6Section />
-            <div className="h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent my-12" />
+            <Divider />
             <GoldenRulesSection />
           </div>
         </main>

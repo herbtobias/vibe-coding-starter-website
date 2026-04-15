@@ -1,22 +1,31 @@
-export default function SectionHeader({ phase, title, icon: Icon, iconColor = 'text-[#00d4ff]' }) {
+export default function SectionHeader({ phase, title, icon: Icon }) {
   return (
-    <div className="mb-8">
+    <div className="mb-10">
       {phase && (
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-mono font-semibold text-[#00d4ff] bg-[#00d4ff]/10 px-2.5 py-1 rounded-full border border-[#00d4ff]/20 uppercase tracking-widest">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-[10px] font-mono font-bold text-[#f97316] uppercase tracking-[0.2em]">
             Phase {phase}
           </span>
+          <div className="h-px flex-1 bg-[#1a1a1a]" />
         </div>
       )}
       <div className="flex items-start gap-3">
         {Icon && (
-          <div className="mt-1 p-2 rounded-lg bg-[#0d1f3c] border border-[#1e3a5f]">
-            <Icon size={20} className={iconColor} />
+          <div className="mt-1 shrink-0 w-8 h-8 border border-[#1f1f1f] flex items-center justify-center bg-[#111]">
+            <Icon size={16} className="text-[#f97316]" />
           </div>
         )}
-        <h2 className="text-2xl font-bold text-[#e2e8f0] leading-tight">{title}</h2>
+        <h2
+          className="font-black text-[#f0ede8] uppercase leading-none"
+          style={{
+            fontFamily: "'Bebas Neue', 'Inter', sans-serif",
+            fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+            letterSpacing: '0.02em',
+          }}
+        >
+          {title}
+        </h2>
       </div>
-      <div className="mt-4 h-px bg-gradient-to-r from-[#1e3a5f] via-[#00d4ff]/20 to-transparent" />
     </div>
   );
 }
