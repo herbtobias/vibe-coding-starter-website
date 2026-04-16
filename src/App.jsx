@@ -13,9 +13,9 @@ import Phase4Section from './components/Phase4Section';
 import Phase5Section from './components/Phase5Section';
 import Phase6Section from './components/Phase6Section';
 import GoldenRulesSection from './components/GoldenRulesSection';
+import GlossaryModal from './components/GlossaryModal';
+import ResourcesModal from './components/ResourcesModal';
 import AdvancedPage from './pages/AdvancedPage';
-import ResourcesPage from './pages/ResourcesPage';
-import GlossaryPage from './pages/GlossaryPage';
 import { navItems } from './data/content';
 
 function Divider() {
@@ -34,12 +34,12 @@ export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('intro');
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const [showResources, setShowResources] = useState(false);
   const [showGlossary, setShowGlossary] = useState(false);
+  const [showResources, setShowResources] = useState(false);
   const observerRef = useRef(null);
 
   useEffect(() => {
-    if (showAdvanced || showResources || showGlossary) {
+    if (showAdvanced) {
       window.scrollTo(0, 0);
       return;
     }
@@ -61,47 +61,32 @@ export default function App() {
 
     elements.forEach((el) => observerRef.current.observe(el));
     return () => observerRef.current?.disconnect();
-  }, [showAdvanced, showResources, showGlossary]);
+  }, [showAdvanced]);
 
   const goToAdvanced = () => {
     setShowAdvanced(true);
-    setShowResources(false);
-    setMobileOpen(false);
-  };
-
-  const goToResources = () => {
-    setShowResources(true);
-    setShowAdvanced(false);
-    setShowGlossary(false);
-    setMobileOpen(false);
-  };
-
-  const goToGlossary = () => {
-    setShowGlossary(true);
-    setShowAdvanced(false);
-    setShowResources(false);
     setMobileOpen(false);
   };
 
   const goBack = () => {
     setShowAdvanced(false);
-    setShowResources(false);
-    setShowGlossary(false);
     setTimeout(() => {
       document.getElementById('golden-rules')?.scrollIntoView({ behavior: 'smooth' });
     }, 50);
   };
 
   if (showAdvanced) {
-    return <AdvancedPage onBack={goBack} onResources={goToResources} onGlossary={goToGlossary} />;
-  }
-
-  if (showResources) {
-    return <ResourcesPage onBack={goBack} onGlossary={goToGlossary} />;
-  }
-
-  if (showGlossary) {
-    return <GlossaryPage onBack={goBack} />;
+    return (
+      <>
+        <AdvancedPage
+          onBack={goBack}
+          onGlossary={() => setShowGlossary(true)}
+          onResources={() => setShowResources(true)}
+        />
+        {showGlossary && <GlossaryModal onClose={() => setShowGlossary(false)} />}
+        {showResources && <ResourcesModal onClose={() => setShowResources(false)} />}
+      </>
+    );
   }
 
   return (
@@ -126,14 +111,14 @@ export default function App() {
           </div>
           <div className="flex items-center gap-2">
             <button
-              onClick={goToGlossary}
+              onClick={() => setShowGlossary(true)}
               className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-[11px] font-mono uppercase tracking-wide px-2 py-1.5 border border-transparent hover:border-[#1e3a5f]"
             >
               <Library size={12} />
               <span className="hidden sm:inline">Glossar</span>
             </button>
             <button
-              onClick={goToResources}
+              onClick={() => setShowResources(true)}
               className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-[11px] font-mono uppercase tracking-wide px-2 py-1.5 border border-transparent hover:border-[#1e3a5f]"
             >
               <BookOpen size={12} />
@@ -189,6 +174,9 @@ export default function App() {
           </div>
         </main>
       </div>
+
+      {showGlossary && <GlossaryModal onClose={() => setShowGlossary(false)} />}
+      {showResources && <ResourcesModal onClose={() => setShowResources(false)} />}
     </div>
   );
 }

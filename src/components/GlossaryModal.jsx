@@ -1,5 +1,5 @@
-import { ArrowLeft, Waves } from 'lucide-react';
-import PrintButton from '../components/PrintButton';
+import { useEffect } from 'react';
+import { X } from 'lucide-react';
 
 const glossaryTerms = [
   {
@@ -101,77 +101,74 @@ const glossaryTerms = [
 
 function GlossaryCard({ term, short, desc }) {
   return (
-    <div className="border border-[#122035] bg-[#080f1e] p-5 hover:border-[#1e3a5f] transition-colors duration-150">
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
-        <h2 className="text-[#00d4ff] font-bold text-base leading-tight">{term}</h2>
-        <span className="text-[11px] font-mono text-[#475569] uppercase tracking-wide">{short}</span>
+    <div className="border border-[#122035] bg-[#060d1a] p-4 hover:border-[#1e3a5f] transition-colors duration-150">
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+        <h3 className="text-[#00d4ff] font-bold text-sm leading-tight">{term}</h3>
+        <span className="text-[10px] font-mono text-[#475569] uppercase tracking-wide">{short}</span>
       </div>
-      <p className="text-[#94a3b8] text-sm leading-relaxed">{desc}</p>
+      <p className="text-[#94a3b8] text-xs leading-relaxed">{desc}</p>
     </div>
   );
 }
 
-export default function GlossaryPage({ onBack }) {
-  return (
-    <div className="min-h-screen bg-[#060d1a]">
-      <header className="fixed top-0 left-0 right-0 z-40 bg-[#060d1a]/95 backdrop-blur-sm border-b border-[#122035]">
-        <div className="max-w-screen-2xl mx-auto px-5 h-12 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={onBack}
-              className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-xs font-mono uppercase tracking-wide"
-            >
-              <ArrowLeft size={14} />
-              <span className="hidden sm:inline">Zurück</span>
-            </button>
-            <div className="w-px h-4 bg-[#122035]" />
-            <a href="#" onClick={onBack} className="flex items-center gap-2">
-              <span className="w-5 h-5 bg-[#00d4ff] flex items-center justify-center">
-                <Waves size={11} className="text-black" />
-              </span>
-              <span className="font-black text-sm text-[#e2e8f0] tracking-tight uppercase hidden sm:block">
-                Vibe Coding Guide
-              </span>
-            </a>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-[10px] font-mono text-[#00d4ff] bg-[#00d4ff]/10 border border-[#00d4ff]/20 px-2 py-0.5 uppercase tracking-widest hidden sm:inline">
-              Glossar
-            </span>
-            <PrintButton />
-          </div>
-        </div>
-      </header>
+export default function GlossaryModal({ onClose }) {
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
 
-      <div className="max-w-4xl mx-auto px-6 pt-20 pb-24">
-        <div className="mb-10">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8 bg-[#00d4ff]" />
+  return (
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+      <div
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        onClick={onClose}
+      />
+      <div className="relative z-10 w-full sm:max-w-4xl sm:mx-4 bg-[#080f1e] border border-[#1e3a5f] flex flex-col max-h-[90vh] sm:max-h-[85vh]">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-[#122035] shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-6 bg-[#00d4ff]" />
             <span className="text-[11px] font-mono font-bold text-[#00d4ff] uppercase tracking-[0.3em]">
               IT-Begriffe auf Deutsch
             </span>
           </div>
-          <h1
-            className="font-black uppercase leading-none mb-4 text-[#e2e8f0]"
+          <button
+            onClick={onClose}
+            className="p-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        <div className="px-5 py-2 border-b border-[#122035] shrink-0">
+          <h2
+            className="font-black uppercase text-[#e2e8f0]"
             style={{
               fontFamily: "'Bebas Neue', 'Inter', sans-serif",
-              fontSize: 'clamp(2.5rem, 7vw, 5rem)',
+              fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
               letterSpacing: '0.01em',
-              lineHeight: '0.9',
+              lineHeight: '1',
             }}
           >
-            <span className="block">Das</span>
-            <span className="block text-[#00d4ff]">Glossar</span>
-          </h1>
-          <p className="text-[#475569] text-sm max-w-xl">
-            IT-Begriffe fühlen sich oft wie eine Fremdsprache an. Hier findest du alle wichtigen Fachbegriffe aus dem Guide – übersetzt in deinen Büro-Alltag.
+            Das <span className="text-[#00d4ff]">Glossar</span>
+          </h2>
+          <p className="text-[#475569] text-xs mt-1">
+            Alle Fachbegriffe aus dem Guide – übersetzt in die Sprache des Büroalltags.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {glossaryTerms.map((item) => (
-            <GlossaryCard key={item.term} {...item} />
-          ))}
+        <div className="overflow-y-auto flex-1 p-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {glossaryTerms.map((item) => (
+              <GlossaryCard key={item.term} {...item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
