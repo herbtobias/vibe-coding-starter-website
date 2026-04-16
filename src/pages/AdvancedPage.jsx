@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Waves, ArrowLeft, Flame, Menu, BookOpen } from 'lucide-react';
+import { Waves, ArrowLeft, Flame, Menu, BookOpen, Library } from 'lucide-react';
 import AdvancedSection from '../components/AdvancedSection';
 import AdvancedTableOfContents from '../components/AdvancedTableOfContents';
 import AdvancedSidebar from '../components/AdvancedSidebar';
@@ -17,7 +17,7 @@ function MobileAdvancedMenu({ isOpen, onClose, onBack }) {
   );
 }
 
-export default function AdvancedPage({ onBack, onResources }) {
+export default function AdvancedPage({ onBack, onResources, onGlossary }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -53,6 +53,13 @@ export default function AdvancedPage({ onBack, onResources }) {
             </a>
           </div>
           <div className="flex items-center gap-2">
+            <button
+              onClick={onGlossary}
+              className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-[11px] font-mono uppercase tracking-wide px-2 py-1.5 border border-transparent hover:border-[#1e3a5f]"
+            >
+              <Library size={12} />
+              <span className="hidden sm:inline">Glossar</span>
+            </button>
             <button
               onClick={onResources}
               className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-[11px] font-mono uppercase tracking-wide px-2 py-1.5 border border-transparent hover:border-[#1e3a5f]"

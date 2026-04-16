@@ -1,4 +1,4 @@
-import { ArrowLeft, Waves, ExternalLink, Flame } from 'lucide-react';
+import { ArrowLeft, Waves, ExternalLink, Flame, Library } from 'lucide-react';
 import PrintButton from '../components/PrintButton';
 
 const sections = [
@@ -169,7 +169,7 @@ function SectionBlock({ section }) {
   );
 }
 
-export default function ResourcesPage({ onBack }) {
+export default function ResourcesPage({ onBack, onGlossary }) {
   const baseSections = sections.filter((s) => s.color === '#00d4ff');
   const advancedSections = sections.filter((s) => s.color === '#f59e0b');
 
@@ -196,6 +196,13 @@ export default function ResourcesPage({ onBack }) {
             </a>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              onClick={onGlossary}
+              className="flex items-center gap-1.5 text-[#475569] hover:text-[#e2e8f0] transition-colors text-[11px] font-mono uppercase tracking-wide px-2 py-1.5 border border-transparent hover:border-[#1e3a5f]"
+            >
+              <Library size={12} />
+              <span className="hidden sm:inline">Glossar</span>
+            </button>
             <span className="text-[10px] font-mono text-[#00d4ff] bg-[#00d4ff]/10 border border-[#00d4ff]/20 px-2 py-0.5 uppercase tracking-widest hidden sm:inline">
               Ressourcen
             </span>

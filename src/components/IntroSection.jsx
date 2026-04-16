@@ -74,7 +74,7 @@ export default function IntroSection() {
           </p>
         </div>
 
-        <div className="bg-[#00d4ff]/5 border border-[#00d4ff]/20 p-6 md:p-8">
+        <div className="bg-[#00d4ff]/5 border border-[#00d4ff]/20 p-6 md:p-8 mb-6">
           <p className="text-[#94a3b8] text-base md:text-lg leading-relaxed">
             Dieser Guide ist deine <strong className="text-[#e2e8f0]">Eintrittskarte in diese neue Welt</strong>.
             Er nimmt dich an die Hand und führt dich durch einen professionellen Software-Entwicklungsprozess –
@@ -82,6 +82,18 @@ export default function IntroSection() {
             besten Ideen und lass uns gemeinsam Software erschaffen, wie es noch nie zuvor möglich war.{' '}
             <span className="text-[#00d4ff] font-bold">Let's go! 🚀</span>
           </p>
+        </div>
+
+        <div className="border border-[#1e3a5f] bg-[#080f1e] p-5 flex gap-4 items-start">
+          <div className="w-1 h-full min-h-[40px] bg-[#00d4ff] shrink-0 self-stretch" />
+          <div>
+            <p className="text-[#94a3b8] text-sm leading-relaxed">
+              Im Guide begegnest du immer wieder Fachbegriffen wie <strong className="text-[#e2e8f0]">Spec, MVP, Branch oder API</strong>.
+              Falls du bei einem Begriff kurz stolperst, findest du oben in der Navigation das{' '}
+              <strong className="text-[#e2e8f0]">Glossar</strong> – dort sind alle Begriffe in verständlichem Deutsch erklärt,
+              übersetzt in die Sprache des Büroalltags.
+            </p>
+          </div>
         </div>
 
       </div>
